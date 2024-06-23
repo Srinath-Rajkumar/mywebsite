@@ -1,7 +1,7 @@
 const GITHUB_USERNAME = 'Srinath-Rajkumar';
         const REPO_NAME = 'security';
         const FILE_PATH = 'Security_Key.txt';
-        const GITHUB_TOKEN = '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';
+        const GITHUB_TOKEN = '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';
 
 async function fetchPasswordFromGitHub() {
     const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
