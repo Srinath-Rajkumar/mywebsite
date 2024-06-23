@@ -2,16 +2,23 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Srinath Rajkumar</title>
-        <link rel="stylesheet" type="text/css" href="/styling/refStyle.css">
+        <link rel="stylesheet" type="text/css" href="/styling/springBoot.css">
         <meta property="og:site_name" content="www.srinath.cloud">
         <meta property="og:title" content="Srinath Rajkumar">
         <meta property="og:description" content="Srinath Rajkumar Portfolio consist of his achievements and current progress.">
         <meta property="og:image" content="https://srinath.cloud">
         <meta property="og:url" content="https://www.srinath.cloud/">
         <meta property="og:type" content="website">
-        <script src="/script.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
+        <script>
+            // Check if authenticated flag is set in session storage
+            if (!sessionStorage.getItem('authenticated')) {
+                // Redirect back to index.html or perform other action
+                window.location.href = 'index.html';
+            }
+        </script>
         <section class="banner">
             <header>
                 <a href="index.html" class="logo">Srinath Rajkumar</a>
@@ -19,34 +26,20 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="reference.html">Reference</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                    
                 </ul>
             </header>
             <div class="content">  
                 <h2>This is for reference purpose only📚</h2>
-                <div id="password-form" >
-                    <label for="password" class="password">Enter Key 🤫 : </label>
-                    <input type="password" id="password" class="password_box"></input>
-                    <div class="button-container">
-                        <button onclick="validatePassword()">Submit</button>
-                    </div>
-                    
-                </div>
-    
-                <div id="authenticated-buttons" class="button-container-1" style="display:none;">
-                    <button onclick="navigateToSpringBoot()">Spring Boot</button>
-                    <button onclick="navigateToReactJS()">ReactJS</button>
-                    <br>
-                    <div>
-                        <button onclick="logout()">Logout</button>
-                    </div>
-                    
-                </div>
+                <div class="button-container">
+                <a target="_blank" href="/study_materials/spring_boot/Mock.pdf"><button class="PDF"><ion-icon name="mail-unread"></ion-icon> Mock </button></a>
+                
+                <a target="_blank" href="/study_materials/spring_boot/Franchise.pdf"><button class="PDF"><ion-icon name="mail-unread"></ion-icon> Franchise </button></a>
+            </div>
             </div>
         </section>
     <!--pdf_test-->
   
 
     <!-- Developer | Programmer | Coder | Designer | Learner -->
-
-
-
