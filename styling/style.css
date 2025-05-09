@@ -353,23 +353,25 @@ img {
     text-align: center;
     padding-top: var(--nav-height);
     /* Account for fixed nav */
-    background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.95)),
-        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-    /* Your dark theme image */
-    transition: background 0.5s ease-in-out;
+    /* background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.95)),
+        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; */
+    background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.95));
+
+        /* Your dark theme image */
+        transition: background 0.5s ease-in-out;
     /* For smoother image switch if desired, though direct switch is fine */
 }
 
 body.light-theme #hero {
     /* --- LIGHT THEME HERO BACKGROUND --- */
-    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(244, 246, 248, 0.75)),
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(244, 246, 248, 0.75));
         /* Lighter overlay */
-        url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-    /* A different, brighter image for light theme or same image with lighter overlay */
-    /* OR if you want a solid color or simpler gradient for light theme: */
-    /* background: var(--primary-bg); */
-    /* background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); */
-    /* Example light gradient */
+        /* url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; */
+        /* A different, brighter image for light theme or same image with lighter overlay */
+        /* OR if you want a solid color or simpler gradient for light theme: */
+        /* background: var(--primary-bg); */
+        /* background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); */
+        /* Example light gradient */
 }
 
 .hero-content h1 {
@@ -893,7 +895,32 @@ body.light-theme .theme-icon-light {
         /* Center icon and text */
     }
 }
+@media (max-width: 410px) {
+    .logo {
+        font-size: 1.6rem; /* You can still reduce size a bit */
+        /* The trick: hide original text, show new content */
+        text-indent: -9999px; /* Hide original text off-screen */
+        display: inline-block; /* Needed for pseudo-element positioning */
+        position: relative; /* Needed for pseudo-element positioning */
+        min-width: 40px; /* Approximate width for "SR" or "S." */
+    }
 
+    .logo::before {
+        content: "Srinath"; /* Or "S. Rajkumar" or just "Srinath" */
+        text-indent: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        /* You might need to adjust font-size here too if it's different from the parent .logo */
+        /* font-size: 1.6rem; */
+    }
+
+    /* Adjust other nav elements as in Option 1 if needed */
+}
 /* Scrollbar styling (Optional, for a more modern look on supporting browsers) */
 body::-webkit-scrollbar {
     width: 10px;
