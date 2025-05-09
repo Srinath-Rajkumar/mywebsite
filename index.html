@@ -1,55 +1,233 @@
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Srinath Rajkumar</title>
-        <link rel="stylesheet" type="text/css" href="/styling/style.css">
-        <meta property="og:site_name" content="www.srinath.cloud">
-        <meta property="og:title" content="Srinath Rajkumar">
-        <meta property="og:description" content="Srinath Rajkumar Portfolio consist of his achievements and current progress.">
-        <meta property="og:image" content="https://srinath.cloud">
-        <meta property="og:url" content="https://www.srinath.cloud/">
-        <meta property="og:type" content="website">
-    </head>
-    <body>
-        <section class="banner">
-            <header>
-                <a href="#" class="logo">Srinath Rajkumar</a>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>  
-            </header>
-            <div class="content">
-                <h3>Hi...</h3>
-                <h2><span>This</span> is Srinath - <span id="text"> FullStackDeveloper</span></h2>
-                <!-- <h1>I am a <span id="text"> Developer</span></h1> -->
-                <!-- <p>I am a FullStackDeveloper🍔, Competent / Proficient in Java, Spring-Boot, Html, CSS, JavaScript, ReactJS.</p> -->
-                <p>As a Full-Stack Developer🍔, I possess a strong command of Java, Spring Boot, HTML, CSS, JavaScript, and ReactJS.<br>
-                     I am highly proficient in these technologies and have extensive experience in building robust and scalable web applications.</p>
-                <br>
-                <a href="mailto:developer@srinath.cloud"><button class="mail"><ion-icon name="mail-unread"></ion-icon> Mail </button></a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Srinath Rajkumar - Full-Stack Developer & Prompt Engineer</title>
+    <meta name="description"
+        content="Portfolio of Srinath Rajkumar, a passionate Full-Stack Developer and Prompt Engineer specializing in Java, Spring Boot, ReactJS, and modern web technologies. Explore projects, experience, and connect.">
+    <meta name="keywords"
+        content="Srinath Rajkumar, Srinath, srinathrajkumar, Full Stack Developer, Java Developer, Spring Boot Developer, ReactJS Developer, Prompt Engineer, Web Developer, Portfolio, Infosys, Panther 3D">
+    <meta name="author" content="Srinath Rajkumar">
+    <link rel="canonical" href="https://www.srinath.cloud/">
+
+    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta property="og:site_name" content="Srinath Rajkumar Portfolio">
+    <meta property="og:title" content="Srinath Rajkumar - Full-Stack Developer & Prompt Engineer">
+    <meta property="og:description"
+        content="Portfolio of Srinath Rajkumar, a passionate Full-Stack Developer and Prompt Engineer. Explore projects like Swiggy Clone, professional experience, and skills.">
+    <!-- IMPORTANT: Replace 'https://www.srinath.cloud/path/to/your/og-image.jpg' with an actual URL to an image (e.g., a professional photo or a banner) -->
+    <meta property="og:image" content="https://www.srinath.cloud/assets/og-image.png">
+    <meta property="og:url" content="https://www.srinath.cloud/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon (Optional but Recommended) -->
+    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- IonIcons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="styling/style.css">
+</head>
+
+<body>
+
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">Srinath Rajkumar</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- ADD THE THEME TOGGLE BUTTON HERE -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+                <ion-icon name="moon-outline" class="theme-icon-dark"></ion-icon>
+                <ion-icon name="sunny-outline" class="theme-icon-light"></ion-icon>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+
+
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="container hero-content">
+            <h4>Hello, I'm</h4>
+            <h1>Srinath Rajkumar</h1>
+            <h2>I'm a <span id="typed-text"></span></h2>
+            <p class="hero-subtitle">Crafting robust and scalable web applications with a passion for clean code and
+                innovative solutions.</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
-            <img src="./assets/fullstackdeveloper.png" class="burger"> 
-                <ul class="social">
-                <!-- <li><a target="_blank" href="https://www.linkedin.com/in/srinathrajkumar07/"><ion-icon name="logo-linkedin"></ion-icon></a></li>  -->
-                <!-- <li><a href="mailto:developer@srinath.cloud"><ion-icon name="mail-unread"></ion-icon></a></li> -->
-             </ul>
-        </section>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-        <script>
-            let typingTezt =new Typed("#text",{
-                strings:["FullStackDeveloper","Gamer","Designer","PhotoGrapher"],
-                loop:true,
-                typerSpeed:50,
-                backSpeed:40,
-                backDelay:2000
-            });
-        </script>
-    <!--git_test-->
+        </div>
+    </section>
 
-    <!-- Developer | Programmer | Coder | Designer | Learner -->
+    <!-- About Section -->
+    <section id="about" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        As a dedicated Full-Stack Developer with nearly 3 years of professional experience, I thrive on
+                        building dynamic and user-centric web applications.
+                        My expertise spans the entire development lifecycle, from conceptualization and design to
+                        deployment and maintenance.
+                    </p>
+                    <p>
+                        I am proficient in <strong>Java</strong> and the <strong>Spring Boot</strong> framework for
+                        robust backend development, and equally skilled in front-end technologies like
+                        <strong>HTML, CSS, JavaScript,</strong> and <strong>ReactJS</strong> to create engaging user
+                        interfaces.
+                        Beyond coding, I'm also exploring the fascinating world of <strong>Prompt Engineering</strong>,
+                        leveraging AI to enhance creative and technical workflows.
+                    </p>
+                    <p>
+                        I'm a firm believer in continuous learning and always eager to embrace new challenges and
+                        technologies.
+                        My goal is to contribute to impactful projects that solve real-world problems.
+                    </p>
+                </div>
+                <!-- Optional: Add a profile picture here if you like -->
+                <!-- <div class="about-image">
+                    <img src="path/to/your-profile-picture.jpg" alt="Srinath Rajkumar">
+                </div> -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><ion-icon name="briefcase-outline"></ion-icon></div>
+                    <div class="timeline-content">
+                        <h3>Systems Engineer</h3>
+                        <p class="company-duration">Infosys | Feb 2022 - Oct 2024 (2 years 9 months)</p>
+                        <p>Contributed to enterprise-level application development and maintenance. Gained extensive
+                            experience in Java, Spring Boot, and agile methodologies, working on critical systems and
+                            collaborating with cross-functional teams to deliver high-quality software solutions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><ion-icon name="build-outline"></ion-icon></div>
+                    <div class="timeline-content">
+                        <h3>Technical Team Member</h3>
+                        <p class="company-duration">Panther 3D | Feb 2021 - Jan 2022 (1 year)</p>
+                        <p>Played a key role in the technical team, focusing on 3D printing technologies and software.
+                            Involved in troubleshooting, product development support, and enhancing technical processes
+                            within a fast-paced startup environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <!-- Optional: Add an image for your project -->
+                    <!-- <img src="https://app.srinath.cloud/swiggyclone/thumbnail.jpg" alt="Swiggy Clone Project Thumbnail" class="project-image"> -->
+                    <div class="project-info">
+                        <h3>Swiggy Clone</h3>
+                        <p class="project-description">
+                            A full-featured clone of the popular food delivery platform Swiggy. This project
+                            demonstrates capabilities in building complex UIs, managing state, and integrating with
+                            backend services (mocked or real).
+                        </p>
+                        <p class="project-tech"><strong>Technologies:</strong> ReactJS, JavaScript, HTML, CSS
+                            (Potentially Spring Boot for backend if applicable)</p>
+                        <a href="https://app.srinath.cloud/swiggyclone" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-secondary btn-small">
+                            View Project <ion-icon name="open-outline"></ion-icon>
+                        </a>
+                        <!-- If you have a GitHub repo for it: -->
+                        <!-- <a href="https://github.com/yourusername/swiggyclone" target="_blank" rel="noopener noreferrer" class="btn btn-icon">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a> -->
+                    </div>
+                </div>
+                <!-- Add more project-card divs here for other projects -->
+                <!--
+                <div class="project-card">
+                    <h3>Another Project</h3>
+                    <p>Description of another cool project.</p>
+                    <p class="project-tech"><strong>Technologies:</strong> Java, Spring Boot, PostgreSQL</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">View Project <ion-icon name="open-outline"></ion-icon></a>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of something
+                amazing.
+                Feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:developer@srinath.cloud" class="contact-link">
+                    <ion-icon name="mail-outline"></ion-icon> developer@srinath.cloud
+                </a>
+                <a href="https://www.linkedin.com/in/srinathrajkumar07/" target="_blank" rel="noopener noreferrer"
+                    class="contact-link">
+                    <ion-icon name="logo-linkedin"></ion-icon> LinkedIn
+                </a>
+                <a href="https://github.com/Srinath-Rajkumar" target="_blank" rel="noopener noreferrer"
+                    class="contact-link"> <!-- Replace with your actual GitHub profile URL -->
+                    <ion-icon name="logo-github"></ion-icon> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> Srinath Rajkumar. All Rights Reserved.</p>
+            <p class="attributions">
+                Hosted with <ion-icon name="heart" style="color: #e25555;"></ion-icon> on <a
+                    href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
+                Design inspired and assisted by AI.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Typed.js Script -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script/script.js"></script>
+</body>
+
+</html>
