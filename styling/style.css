@@ -1,66 +1,78 @@
 /* CSS Variables */
 :root {
-    /* Dark Theme (Default) */
-    --primary-bg: #222831;
-    --secondary-bg: #393e46;
-    --accent-color: #00adb5;
-    /* Teal for dark theme */
-    --text-primary: #eeeeee;
-    --text-secondary: #adb5bd;
-    --border-color: #4a4a4e;
-    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --nav-bg: rgba(34, 40, 49, 0.9);
-    /* Dark Nav BG */
+    /* Dark Theme (Focused: Black, Green, White) */
+    --primary-bg: #342E37;                      /* Raisin Black */
+    --secondary-bg: #2a252e;                  /* Slightly Lighter Raisin Black for cards/sections */
+    --accent-color: #A2D729;                   /* Yellow Green */
+    --text-primary: #FAFFFD;                   /* Baby Powder (White) */
+    --text-secondary: #bdc3c7;                 /* Softer white/light grey for secondary text */
+    --text-on-accent: #342E37;                 /* Raisin Black (for text on Yellow Green buttons) */
+    --border-color: #4a444f;                   /* Darker border related to Raisin Black */
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow on dark */
+    --nav-bg: rgba(52, 46, 55, 0.92);          /* Raisin Black, transparent */
     --logo-color: var(--text-primary);
     --nav-text-color: var(--text-secondary);
-    --nav-text-hover-color: var(--text-primary);
+    --nav-text-hover-color: var(--accent-color);
+    --btn-primary-text-color: var(--text-on-accent); /* Text for primary buttons */
     --btn-secondary-bg-hover: var(--text-primary);
     --btn-secondary-color-hover: var(--primary-bg);
     --timeline-icon-bg: var(--secondary-bg);
     --timeline-icon-border: var(--accent-color);
-    --project-card-hover-shadow: 0 8px 25px rgba(0, 173, 181, 0.3);
-    /* Accent color shadow for dark */
+    --project-card-hover-shadow: 0 8px 25px rgba(162, 215, 41, 0.35); /* Yellow Green shadow */
     --hamburger-color: var(--text-primary);
     --scrollbar-track: var(--primary-bg);
     --scrollbar-thumb: var(--accent-color);
 
+    /* Hero Overlays for Dark Theme */
+    --hero-overlay-start-dark: rgba(52, 46, 55, 0.75); /* Raisin Black overlay */
+    --hero-overlay-end-dark: rgba(52, 46, 55, 0.9);   /* Raisin Black overlay */
 
     /* Shared Variables */
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Open Sans', sans-serif;
     --nav-height: 70px;
+
+    /* Other Palette Colors (for potential selective use) */
+    --color-bleu-de-france: #3784D1;
+    --color-tufts-blue: #3C91E6; /* Used in light theme accent */
+    --color-coral: #FA824C;      /* Used in light theme secondary accent */
+    --color-atomic-tangerine: #FA8D5C;
 }
 
+
 body.light-theme {
-    --primary-bg: #f4f6f8;
-    /* Light Grey */
-    --secondary-bg: #ffffff;
-    /* White */
-    --accent-color: #007bff;
-    /* A nice blue for light theme */
-    --text-primary: #212529;
-    /* Dark Grey/Black */
-    --text-secondary: #5a6268;
-    /* Medium Grey */
-    --border-color: #dee2e6;
-    /* Light Border */
+    /* Light Theme (Focused: White, Blue, Coral) */
+    --primary-bg: #FAFFFD;                   /* Baby Powder (White) */
+    --secondary-bg: #FFFFFF;                   /* Pure White - for cards/sections */
+    --accent-color: #3C91E6;                   /* Tufts Blue */
+    --text-primary: #342E37;                   /* Raisin Black (for text on white) */
+    --text-secondary: #5c5c66;                 /* Darker grey for secondary text */
+    --text-on-accent: #FAFFFD;                 /* Baby Powder (White) (for text on Tufts Blue buttons) */
+    --border-color: #e0e0e0;                   /* Light Grey */
     --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    /* Light Nav BG */
+    --nav-bg: rgba(250, 255, 253, 0.95);       /* Baby Powder, transparent */
     --logo-color: var(--text-primary);
     --nav-text-color: var(--text-secondary);
     --nav-text-hover-color: var(--accent-color);
-    /* Use accent for hover in light */
+    --btn-primary-text-color: var(--text-on-accent); /* Text for primary buttons */
     --btn-secondary-bg-hover: var(--text-primary);
-    --btn-secondary-color-hover: var(--secondary-bg);
+    --btn-secondary-color-hover: var(--secondary-bg); /* White */
     --timeline-icon-bg: var(--secondary-bg);
     --timeline-icon-border: var(--accent-color);
-    --project-card-hover-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
-    /* Accent color shadow for light */
+    --project-card-hover-shadow: 0 8px 25px rgba(60, 145, 230, 0.2); /* Tufts Blue shadow */
     --hamburger-color: var(--text-primary);
     --scrollbar-track: #e9ecef;
     --scrollbar-thumb: var(--accent-color);
+
+    /* Hero Overlays for Light Theme */
+    --hero-overlay-start-light: rgba(250, 255, 253, 0.3); /* Baby Powder overlay, very transparent */
+    --hero-overlay-end-light: rgba(250, 255, 253, 0.6);   /* Baby Powder overlay */
+
+    /* Specific accent for light theme if needed for Get In Touch button */
+    --accent-cta-light: var(--color-coral); /* Coral for special CTAs */
+    --text-on-accent-cta-light: #FAFFFD; /* White text on Coral */
 }
+
 
 /* Global Resets & Base Styles */
 * {
@@ -193,7 +205,7 @@ img {
 
 .btn-primary {
     background-color: var(--accent-color);
-    color: #fff;
+    color: var(--btn-primary-text-color); /* UPDATED to use this variable */
     border-color: var(--accent-color);
 }
 
