@@ -606,7 +606,34 @@ body.light-theme #hero {
     margin-left: 10px;
     vertical-align: middle;
 }
+.project-links {
+    display: flex;  /* Align buttons in a row */
+    gap: 10px;      /* Space between the "View Project" and "GitHub" buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller card widths */
+    /* margin-top: auto; /* Alternative way to push to bottom if .project-description doesn't have flex-grow */
+}
 
+/* Style for buttons within the project-links container */
+.project-links .btn {
+    display: inline-flex; /* Use flex to align icon and text inside the button */
+    align-items: center;  /* Vertically center icon and text */
+    justify-content: center;
+    /* If you want buttons to take equal width and fill space, you could add:
+    flex-grow: 1;
+    flex-basis: 0; // For true equal distribution
+    But for now, default behavior is probably fine.
+    */
+}
+
+/* Adjust margins for icons within the project link buttons */
+.project-links .btn ion-icon[name="open-outline"] {
+    margin-left: 6px; /* Space between "View Project" text and its icon */
+}
+
+.project-links .btn ion-icon[name="logo-github"] {
+    margin-right: 6px; /* Space between GitHub icon and "GitHub" text */
+    /* font-size: 1.1em; /* Optional: Make GitHub icon slightly larger if you like */
+}
 /* Contact Section */
 .contact-content {
     text-align: center;
