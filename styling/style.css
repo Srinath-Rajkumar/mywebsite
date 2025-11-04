@@ -31,6 +31,17 @@
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Open Sans', sans-serif;
     --nav-height: 70px;
+    
+    /* Animation & Transition Variables */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
     /* Other Palette Colors (for potential selective use) */
     --color-bleu-de-france: #3784D1;
@@ -41,16 +52,16 @@
 
 
 body.light-theme {
-    /* Light Theme (Focused: White, Blue, Coral) */
-    --primary-bg: #FAFFFD;                   /* Baby Powder (White) */
+    /* Light Theme (Focused: Warm Off-White, Blue, Coral) */
+    --primary-bg: #F5F7FA;                   /* Soft Blue-Grey (warm off-white with subtle blue tint) */
     --secondary-bg: #FFFFFF;                   /* Pure White - for cards/sections */
     --accent-color: #3C91E6;                   /* Tufts Blue */
-    --text-primary: #342E37;                   /* Raisin Black (for text on white) */
-    --text-secondary: #5c5c66;                 /* Darker grey for secondary text */
-    --text-on-accent: #FAFFFD;                 /* Baby Powder (White) (for text on Tufts Blue buttons) */
-    --border-color: #e0e0e0;                   /* Light Grey */
-    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --nav-bg: rgba(250, 255, 253, 0.95);       /* Baby Powder, transparent */
+    --text-primary: #1a1a2e;                   /* Deep Navy (darker for better contrast) */
+    --text-secondary: #4a5568;                 /* Medium grey for secondary text */
+    --text-on-accent: #FFFFFF;                 /* White (for text on Tufts Blue buttons) */
+    --border-color: #d1d5db;                   /* Light Grey with more definition */
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    --nav-bg: rgba(245, 247, 250, 0.95);       /* Soft Blue-Grey, transparent */
     --logo-color: var(--text-primary);
     --nav-text-color: var(--text-secondary);
     --nav-text-hover-color: var(--accent-color);
@@ -59,18 +70,23 @@ body.light-theme {
     --btn-secondary-color-hover: var(--secondary-bg); /* White */
     --timeline-icon-bg: var(--secondary-bg);
     --timeline-icon-border: var(--accent-color);
-    --project-card-hover-shadow: 0 8px 25px rgba(60, 145, 230, 0.2); /* Tufts Blue shadow */
+    --project-card-hover-shadow: 0 8px 30px rgba(60, 145, 230, 0.25), 0 4px 12px rgba(60, 145, 230, 0.15); /* Enhanced Tufts Blue shadow */
     --hamburger-color: var(--text-primary);
-    --scrollbar-track: #e9ecef;
+    --scrollbar-track: #e2e8f0;
     --scrollbar-thumb: var(--accent-color);
 
     /* Hero Overlays for Light Theme */
-    --hero-overlay-start-light: rgba(250, 255, 253, 0.3); /* Baby Powder overlay, very transparent */
-    --hero-overlay-end-light: rgba(250, 255, 253, 0.6);   /* Baby Powder overlay */
+    --hero-overlay-start-light: rgba(245, 247, 250, 0.3); /* Soft Blue-Grey overlay, very transparent */
+    --hero-overlay-end-light: rgba(245, 247, 250, 0.6);   /* Soft Blue-Grey overlay */
 
     /* Specific accent for light theme if needed for Get In Touch button */
     --accent-cta-light: var(--color-coral); /* Coral for special CTAs */
-    --text-on-accent-cta-light: #FAFFFD; /* White text on Coral */
+    --text-on-accent-cta-light: #FFFFFF; /* White text on Coral */
+    
+    /* Glassmorphism for Light Theme */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.85);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
 }
 
 
@@ -95,8 +111,92 @@ body {
     /* USES VARIABLE */
     line-height: 1.7;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--transition-base), color var(--transition-base);
     /* For smooth theme change */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+/* Subtle background texture for light theme */
+body.light-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 2px 2px, rgba(60, 145, 230, 0.02) 1px, transparent 0),
+        linear-gradient(135deg, rgba(60, 145, 230, 0.01) 0%, transparent 50%);
+    background-size: 60px 60px, 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+body.light-theme > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 /* Container */
@@ -117,23 +217,34 @@ h4 {
     /* USES VARIABLE */
     margin-bottom: 1rem;
     line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 h1 {
     font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 h2 {
     font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 h3 {
     font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 h4 {
     font-size: 1.2rem;
     color: var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 
@@ -145,12 +256,19 @@ p {
 a {
     color: var(--accent-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-base);
+    position: relative;
 }
 
 a:hover {
-    color: #007a7f;
-    /* Darker shade of accent */
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 ul {
@@ -173,6 +291,7 @@ img {
     font-size: 2.5rem;
     position: relative;
     padding-bottom: 15px;
+    animation: fadeInUp 0.6s ease-out;
 }
 
 .section-title::after {
@@ -183,49 +302,118 @@ img {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--accent-color);
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
     border-radius: 2px;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(162, 215, 41, 0.3), transparent);
+    border-radius: 2px;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
 .bg-light {
     background-color: var(--secondary-bg);
+    position: relative;
+}
+
+/* Enhanced light theme background with subtle pattern */
+body.light-theme .bg-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 1px 1px, rgba(60, 145, 230, 0.03) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     text-align: center;
     font-family: var(--font-primary);
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateY(0);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: translateY(2px);
 }
 
 .btn-primary {
-    background-color: var(--accent-color);
-    color: var(--btn-primary-text-color); /* UPDATED to use this variable */
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color) 100%);
+    color: var(--btn-primary-text-color);
     border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(162, 215, 41, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: transparent;
+    background: transparent;
     color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(162, 215, 41, 0.4);
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 .btn-secondary {
     background-color: transparent;
     color: var(--text-primary);
     border-color: var(--text-primary);
-    /* Or var(--accent-color) for more pop */
+    backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
     background-color: var(--btn-secondary-bg-hover);
-    /* USES VARIABLE */
     color: var(--btn-secondary-color-hover);
-    /* USES VARIABLE */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
 }
 
 .btn-small {
@@ -247,17 +435,23 @@ img {
 
 /* Header / Navigation */
 #header {
-    background-color: var(--nav-bg);
-    /* Slightly transparent primary-bg */
-    backdrop-filter: blur(10px);
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     height: var(--nav-height);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--glass-border);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+#header.scrolled {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: var(--nav-bg);
 }
 
 #header nav {
@@ -301,8 +495,9 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, var(--accent-color), rgba(162, 215, 41, 0.5));
+    transition: width var(--transition-base);
+    border-radius: 2px;
 }
 
 .nav-links a:hover::after,
@@ -313,6 +508,17 @@ img {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--nav-text-hover-color);
+    transform: translateY(-2px);
+}
+
+.nav-links a {
+    transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.nav-links a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 
@@ -364,43 +570,83 @@ img {
     justify-content: center;
     text-align: center;
     padding-top: var(--nav-height);
-    /* Account for fixed nav */
-    /* background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.95)),
-        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; */
-    background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.95));
+    position: relative;
+    background: linear-gradient(135deg, rgba(52, 46, 55, 0.95) 0%, rgba(42, 37, 46, 0.98) 50%, rgba(52, 46, 55, 0.95) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+    overflow: hidden;
+}
 
-        /* Your dark theme image */
-        transition: background 0.5s ease-in-out;
-    /* For smoother image switch if desired, though direct switch is fine */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(162, 215, 41, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(162, 215, 41, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 body.light-theme #hero {
-    /* --- LIGHT THEME HERO BACKGROUND --- */
-    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(244, 246, 248, 0.75));
-        /* Lighter overlay */
-        /* url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; */
-        /* A different, brighter image for light theme or same image with lighter overlay */
-        /* OR if you want a solid color or simpler gradient for light theme: */
-        /* background: var(--primary-bg); */
-        /* background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); */
-        /* Example light gradient */
+    background: linear-gradient(135deg, 
+        rgba(245, 247, 250, 0.98) 0%, 
+        rgba(236, 240, 247, 0.95) 25%,
+        rgba(255, 255, 255, 0.98) 50%, 
+        rgba(236, 240, 247, 0.95) 75%,
+        rgba(245, 247, 250, 0.98) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+body.light-theme #hero::before {
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(60, 145, 230, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(60, 145, 230, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(60, 145, 230, 0.05) 0%, transparent 60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content h4 {
+    animation: fadeIn 0.6s ease-out 0.2s backwards;
+    margin-bottom: 0.5rem;
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
-    /* Brighter for hero */
+    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-theme .hero-content h1 {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-content h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--accent-color);
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
 }
 
 .hero-content h2 #typed-text {
     border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 2px;
+    display: inline-block;
 }
 
 .hero-subtitle {
@@ -408,6 +654,12 @@ body.light-theme #hero {
     max-width: 600px;
     margin: 0 auto 2rem auto;
     color: var(--text-secondary);
+    animation: fadeInUp 0.8s ease-out 0.5s backwards;
+    line-height: 1.8;
+}
+
+.hero-cta {
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
 }
 
 .hero-cta a {
@@ -518,10 +770,28 @@ body.light-theme #hero {
 
 .timeline-content {
     padding: 20px 30px;
-    background-color: var(--secondary-bg);
+    background: var(--secondary-bg);
+    backdrop-filter: blur(10px);
     position: relative;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: var(--card-shadow);
+    border: 1px solid var(--glass-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(162, 215, 41, 0.2);
+}
+
+body.light-theme .timeline-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 252, 255, 0.98) 100%);
+    border: 1px solid rgba(60, 145, 230, 0.1);
+}
+
+body.light-theme .timeline-item:hover .timeline-content {
+    box-shadow: 0 8px 30px rgba(60, 145, 230, 0.2), 0 4px 12px rgba(60, 145, 230, 0.1);
+    border-color: rgba(60, 145, 230, 0.2);
 }
 
 .timeline-content h3 {
@@ -543,20 +813,43 @@ body.light-theme #hero {
 }
 
 .project-card {
-    background-color: var(--secondary-bg);
-    /* Or var(--primary-bg) if main bg is lighter */
-    border-radius: 8px;
+    background: var(--secondary-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--glass-border);
+    position: relative;
+}
+
+body.light-theme .project-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 252, 255, 0.98) 100%);
+    border: 1px solid rgba(60, 145, 230, 0.1);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 173, 181, 0.3);
-    /* Accent color shadow */
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--project-card-hover-shadow);
+    border-color: var(--accent-color);
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-image {
@@ -656,24 +949,55 @@ body.light-theme #hero {
 .contact-link {
     font-size: 1.1rem;
     color: var(--text-primary);
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-radius: 12px;
+    transition: all var(--transition-base);
     display: inline-flex;
     align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(162, 215, 41, 0.1), transparent);
+    transition: left var(--transition-slow);
+}
+
+.contact-link:hover::before {
+    left: 100%;
 }
 
 .contact-link ion-icon {
     margin-right: 8px;
     font-size: 1.3rem;
     color: var(--accent-color);
+    transition: transform var(--transition-base);
 }
 
 .contact-link:hover {
     background-color: var(--secondary-bg);
     border-color: var(--accent-color);
     color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(162, 215, 41, 0.2);
+}
+
+.contact-link:hover ion-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.contact-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /* Footer */
@@ -700,28 +1024,59 @@ body.light-theme #hero {
 }
 
 .theme-toggle-btn {
-    background: none;
-    border: none;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
     color: var(--nav-text-color);
-    /* Use nav text color */
     font-size: 1.5rem;
-    /* Adjust size as needed */
     cursor: pointer;
-    padding: 5px 10px;
-    /* Give it some padding */
+    padding: 8px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 15px;
-    /* Space from nav links or hamburger */
-    transition: color 0.3s ease;
+    transition: all var(--transition-base);
     order: 3;
-    /* Ensure it's after nav links and before hamburger in flex order if needed */
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--accent-color);
+    opacity: 0.2;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.theme-toggle-btn:hover::before {
+    width: 100%;
+    height: 100%;
 }
 
 .theme-toggle-btn:hover {
     color: var(--accent-color);
-    /* Use themed accent color on hover */
+    transform: rotate(15deg) scale(1.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(162, 215, 41, 0.3);
+}
+
+.theme-toggle-btn:active {
+    transform: rotate(15deg) scale(0.95);
+}
+
+.theme-toggle-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /* Hide one icon based on theme */
@@ -776,14 +1131,17 @@ body.light-theme .theme-icon-light {
         width: 70%;
         max-width: 300px;
         height: 100vh;
-        background-color: var(--secondary-bg);
+        background: var(--secondary-bg);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
         flex-direction: column;
         padding-top: calc(var(--nav-height) + 20px);
         /* Below header */
         transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         /* Smooth slide */
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
         z-index: 999;
+        border-left: 1px solid var(--glass-border);
         /* Below nav-toggle */
     }
 
@@ -970,7 +1328,40 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
+    background: linear-gradient(180deg, var(--accent-color), rgba(162, 215, 41, 0.8));
     border-radius: 20px;
     border: 2px solid var(--primary-bg);
+    transition: background var(--transition-base);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--accent-color), var(--accent-color));
+}
+
+/* Focus States for Accessibility */
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Smooth Page Load Animation */
+body {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Improved Touch Targets for Mobile */
+@media (max-width: 768px) {
+    .btn,
+    .contact-link,
+    .theme-toggle-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .nav-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
 }
