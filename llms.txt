@@ -1,0 +1,70 @@
+# Srinath Rajkumar – Portfolio
+
+> React Developer & Full-Stack Engineer based in India.
+> Personal portfolio site at https://www.srinath.cloud/
+
+## About
+
+Srinath Rajkumar is a React Developer and Full-Stack Engineer with experience building modern, scalable web applications. He specializes in ReactJS, Java, Spring Boot, and frontend technologies including HTML, CSS, and JavaScript.
+
+- **Email:** developer@srinath.cloud
+- **Website:** https://www.srinath.cloud/
+- **LinkedIn:** https://www.linkedin.com/in/srinathrajkumar07/
+- **GitHub:** https://github.com/Srinath-Rajkumar
+- **Location:** India
+
+## Skills
+
+- **Frontend:** React.js, Vite, JavaScript (ES6+), TypeScript, HTML5, CSS3, Tailwind CSS, Ant Design, Responsive Design, UI Component Development
+- **Data / API:** GraphQL, REST API Integration
+- **Backend:** Java, Spring Boot, Express.js
+- **Database:** PostgreSQL, MongoDB
+- **Tools & Other:** Git, Prompt Engineering, Agile Methodologies, Web Performance Optimization
+
+## Experience
+
+### React Developer — Jusgoeaz Technologies *(Current)*
+**Jul 2025 – Present · Full-time · On-site · India**
+
+Building modern, high-performance web applications using ReactJS. Developing scalable UI components, integrating REST APIs, and delivering responsive, user-centric interfaces.
+
+---
+
+### Full Stack Developer Trainee — Infoem Software Solutions
+**Jan 2025 – Apr 2025 · 4 months · Apprenticeship · Namakkal, Tamil Nadu**
+
+Completed a Java Full Stack training program. Built responsive UIs with HTML, CSS & JavaScript, developed backend modules using Java & Spring Boot, and delivered mini-projects covering end-to-end full-stack concepts.
+
+---
+
+### Systems Engineer — Infosys
+**Feb 2022 – Oct 2024 · 2 years 9 months · Full-time**
+
+Contributed to enterprise-level application development and maintenance. Extensive experience in Java, Spring Boot, and agile methodologies, working on critical systems and collaborating with cross-functional teams.
+
+---
+
+### Technical Team Member — Panther 3D
+**Feb 2021 – Jan 2022 · 1 year · Full-time**
+
+Played a key role in the technical team focusing on 3D printing technologies and software. Involved in troubleshooting, product development support, and enhancing technical processes.
+
+## Projects
+
+### 3D Print Farm Management
+A comprehensive software solution to monitor, manage, and optimize operations for a 3D printer farm. Features real-time printer status tracking, job queuing, and resource analytics.
+
+- **Technologies:** ReactJS, Express.js, MongoDB
+- **GitHub:** https://github.com/Srinath-Rajkumar/3dprint_tracker
+
+## Contact
+
+Feel free to reach out for collaboration, freelance projects, or job opportunities.
+
+- **Email:** developer@srinath.cloud
+- **LinkedIn:** https://www.linkedin.com/in/srinathrajkumar07/
+- **GitHub:** https://github.com/Srinath-Rajkumar
+
+---
+
+*This file follows the [llms.txt standard](https://llmstxt.org/) to help AI models accurately understand and represent this portfolio.*

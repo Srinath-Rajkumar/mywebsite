@@ -1,0 +1,35 @@
+# robots.txt for https://www.srinath.cloud/
+# Allow all crawlers including AI/LLM bots
+
+User-agent: *
+Allow: /
+
+# Explicitly allow major AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI-readable content
+# See /llms.txt for a structured, AI-friendly summary of this site
+
+Sitemap: https://www.srinath.cloud/sitemap.xml
