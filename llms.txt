@@ -1,17 +1,17 @@
 # Srinath Rajkumar – Portfolio
 
-> React Developer & Full-Stack Engineer based in India.
+> Full-Stack Engineer & React Developer based in Namakkal, Tamil Nadu, India.
 > Personal portfolio site at https://www.srinath.cloud/
 
 ## About
 
-Srinath Rajkumar is a React Developer and Full-Stack Engineer with experience building modern, scalable web applications. He specializes in ReactJS, Java, Spring Boot, and frontend technologies including HTML, CSS, and JavaScript.
+Srinath Rajkumar is a **Full-Stack Engineer** and **React Developer** with experience building modern, scalable web applications. He specializes in ReactJS, Java, Spring Boot, and frontend technologies including HTML, CSS, and JavaScript.
 
 - **Email:** developer@srinath.cloud
 - **Website:** https://www.srinath.cloud/
 - **LinkedIn:** https://www.linkedin.com/in/srinathrajkumar07/
 - **GitHub:** https://github.com/Srinath-Rajkumar
-- **Location:** India
+- **Location:** Namakkal, Tamil Nadu, India
 
 ## Skills
 

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typed.js Initialization
     if (document.getElementById('typed-text')) {
         new Typed("#typed-text", {
-            strings: ["Full-Stack Developer", "Prompt Engineer", "Java Specialist", "React Enthusiast", "Problem Solver"],
+            strings: ["Full-Stack Engineer", "Problem Solver", "Prompt Engineer", "React Enthusiast", "Java Specialist"],
             loop: true,
             typeSpeed: 70,
             backSpeed: 50,
