@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('.section');
     const header = document.getElementById('header');
-    const navHeight = header ? header.offsetHeight : 70; // Fallback if header not found yet
+    // Read header height live — it shrinks via the .scrolled class, so a
+    // value captured at DOMContentLoaded would drift by a few px after scroll.
+    const getNavHeight = () => (header ? header.offsetHeight : 70);
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                const targetPosition = targetSection.offsetTop - navHeight + 1; // +1 for pixel precision
+                const targetPosition = targetSection.offsetTop - getNavHeight() + 1;
 
                 window.scrollTo({
                     top: targetPosition,
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update active nav link on scroll (throttled for performance)
     function updateActiveNavLink() {
         let currentSectionId = '';
-        const scrollPosition = window.scrollY + navHeight + 100;
+        const scrollPosition = window.scrollY + getNavHeight() + 100;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -150,39 +152,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    // Theme Toggle Functionality
+    // Theme Toggle — dark is the default; only switch to light when the user
+    // has explicitly opted in (persisted in localStorage). System preference
+    // is intentionally ignored so the brand-dark look is the first impression.
     const themeToggleButton = document.getElementById('theme-toggle');
     const body = document.body;
-    const currentTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme');
 
-    // Apply saved theme on load
-    if (currentTheme) {
-        body.classList.add(currentTheme); // Assumes 'light-theme' is the class for light mode
-        // If your default is dark, you only need to add 'light-theme' class
-        // If 'dark-theme' is a class, then:
-        // if (currentTheme === 'light-theme') body.classList.add('light-theme');
-        // else body.classList.add('dark-theme'); // or remove 'light-theme'
+    if (savedTheme === 'light-theme') {
+        body.classList.add('light-theme');
     } else {
-        // Optional: Check system preference if no theme is saved
-        // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        // if (!prefersDark) { // If system prefers light AND no saved theme
-        //     body.classList.add('light-theme');
-        // }
-        // For now, default is dark as per CSS unless 'light-theme' is added.
+        body.classList.remove('light-theme');
     }
-
 
     if (themeToggleButton) {
         themeToggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-
-            // Save preference to localStorage
-            if (body.classList.contains('light-theme')) {
-                localStorage.setItem('theme', 'light-theme');
-            } else {
-                localStorage.removeItem('theme'); // Or set localStorage.setItem('theme', 'dark-theme');
-                // if you have a specific .dark-theme class
-            }
+            const isLight = body.classList.toggle('light-theme');
+            localStorage.setItem('theme', isLight ? 'light-theme' : 'dark-theme');
         });
     }
 
@@ -192,26 +178,57 @@ document.addEventListener('DOMContentLoaded', () => {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
+    // Auto-update current role duration (e.g. "11 mos", "1 yr 2 mos")
+    function formatRoleDuration(totalMonths) {
+        if (totalMonths < 12) {
+            return `${totalMonths} mos`;
+        }
+        const years = Math.floor(totalMonths / 12);
+        const months = totalMonths % 12;
+        const yearLabel = years === 1 ? '1 yr' : `${years} yrs`;
+        return months === 0 ? yearLabel : `${yearLabel} ${months} mos`;
+    }
+
+    function updateCurrentRoleDuration() {
+        const durationEl = document.getElementById('current-role-duration');
+        const roleEl = document.querySelector('[data-role-start]');
+        if (!durationEl || !roleEl) return;
+
+        const [year, month] = roleEl.dataset.roleStart.split('-').map(Number);
+        const startDate = new Date(year, month - 1, 1);
+        const now = new Date();
+        const totalMonths =
+            (now.getFullYear() - startDate.getFullYear()) * 12 +
+            (now.getMonth() - startDate.getMonth());
+
+        durationEl.textContent = formatRoleDuration(Math.max(1, totalMonths));
+    }
+
+    updateCurrentRoleDuration();
+
     // Enhanced Scroll Reveal Animation with Staggered Effect
     const revealElements = document.querySelectorAll('.timeline-item, .project-card, .about-text, .contact-link');
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Stagger animation for multiple elements
                 setTimeout(() => {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                     entry.target.classList.add('revealed');
-                }, index * 100); // Stagger by 100ms
-                
-                // Unobserve after revealing for performance
+                    // Hand transform control back to CSS (parallax) after reveal.
+                    setTimeout(() => {
+                        entry.target.style.transform = '';
+                        entry.target.style.transition = 'opacity 0.6s ease-out';
+                    }, 700);
+                }, index * 100);
+
                 observer.unobserve(entry.target);
             }
         });
     }, { 
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+        rootMargin: '0px 0px -50px 0px'
     });
 
     revealElements.forEach((el, index) => {
@@ -238,31 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize page load animation
     initPageLoadAnimation();
-
-    // Lazy loading for images (if any are added in future)
-    if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach(img => {
-            img.src = img.dataset.src || img.src;
-        });
-    } else {
-        // Fallback for browsers that don't support native lazy loading
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(script);
-    }
-
-    // Performance: Preload critical resources
-    const preloadLinks = document.querySelectorAll('link[rel="preload"]');
-    preloadLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href) {
-            const linkElement = document.createElement('link');
-            linkElement.rel = 'prefetch';
-            linkElement.href = href;
-            document.head.appendChild(linkElement);
-        }
-    });
 
     // Smooth scroll polyfill for older browsers
     if (!('scrollBehavior' in document.documentElement.style)) {

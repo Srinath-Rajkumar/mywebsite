@@ -271,11 +271,64 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
 
-    <!-- Custom Stylesheet -->
+    <!-- Critical CSS: render-blocking, ships above-the-fold styles only
+         (loader, header, hero, base typography, theme tokens). -->
     <link rel="stylesheet" href="styling/style.css" />
+
+    <!-- Deferred CSS: below-the-fold sections, command palette, polish.
+         Loaded in parallel via the preload-then-swap pattern so it does
+         not block first paint. <noscript> fallback keeps it working
+         when JS (and therefore the onload swap) is disabled. -->
+    <link
+      rel="preload"
+      href="styling/deferred.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="styling/deferred.css" /></noscript>
+
+    <!-- Theme bootstrap: apply persisted theme before paint to avoid FOUC.
+         Dark is the default; only the explicit "light-theme" opt-in flips it. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'light-theme') {
+            document.documentElement.classList.add('light-theme-pre');
+          }
+        } catch (e) {}
+      })();
+      document.addEventListener('DOMContentLoaded', function () {
+        if (document.documentElement.classList.contains('light-theme-pre')) {
+          document.body.classList.add('light-theme');
+          document.documentElement.classList.remove('light-theme-pre');
+        }
+      });
+    </script>
   </head>
 
   <body>
+    <!-- Page Load Loader -->
+    <div
+      id="sr-loader"
+      class="sr-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading portfolio"
+    >
+      <div class="sr-loader__ring" style="--p: 0">
+        <span class="sr-loader__mark" aria-hidden="true">SR</span>
+      </div>
+      <span class="sr-loader__pct" aria-hidden="true">0%</span>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div
+      id="sr-scroll-progress"
+      class="sr-scroll-progress"
+      aria-hidden="true"
+    ></div>
+
     <!-- Header / Navigation -->
     <header id="header" role="banner">
       <nav class="container" role="navigation" aria-label="Main navigation">
@@ -320,6 +373,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="section" role="main" aria-label="Hero section">
+      <canvas id="hero-fx" class="hero-fx" aria-hidden="true"></canvas>
       <div class="container hero-content">
         <p class="hero-greeting" aria-hidden="true">Hello, I'm</p>
         <h1>Srinath Rajkumar</h1>
@@ -399,8 +453,9 @@
             <div class="timeline-content">
               <span class="current-badge" aria-label="Current role">Current</span>
               <h3>React Developer</h3>
-              <p class="company-duration">
-                Jusgoeaz Technologies · Full-time | Jul 2025 - Present · 8 mos
+              <p class="company-duration" data-role-start="2025-07">
+                Jusgoeaz Technologies · Full-time | Jul 2025 - Present ·
+                <span id="current-role-duration" aria-label="Duration in current role"></span>
               </p>
               <p>
                 Building modern, high-performance web applications using
@@ -576,12 +631,79 @@
       </div>
     </footer>
 
+    <!-- Command Palette (Cmd+K / Ctrl+K) -->
+    <div
+      id="sr-cmdk"
+      class="sr-cmdk"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sr-cmdk-title"
+      hidden
+    >
+      <div class="sr-cmdk__panel" role="document">
+        <h2 id="sr-cmdk-title" class="sr-visually-hidden">
+          Command palette
+        </h2>
+        <div class="sr-cmdk__inputwrap">
+          <ion-icon
+            name="search-outline"
+            class="sr-cmdk__searchicon"
+            aria-hidden="true"
+          ></ion-icon>
+          <input
+            id="sr-cmdk-input"
+            class="sr-cmdk__input"
+            type="text"
+            placeholder="Type a command or search..."
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="sr-cmdk-list"
+            aria-autocomplete="list"
+          />
+          <kbd class="sr-cmdk__esc">Esc</kbd>
+        </div>
+        <ul
+          id="sr-cmdk-list"
+          class="sr-cmdk__list"
+          role="listbox"
+          aria-label="Suggestions"
+        ></ul>
+        <p id="sr-cmdk-empty" class="sr-cmdk__empty" hidden>
+          No results found.
+        </p>
+        <div class="sr-cmdk__footer">
+          <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+          <span><kbd>&#9166;</kbd> select</span>
+          <span><kbd>Esc</kbd> close</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cmd+K hint chip -->
+    <button
+      id="sr-cmdk-hint"
+      class="sr-cmdk-hint"
+      type="button"
+      aria-label="Open command palette"
+    >
+      Press <kbd>Ctrl</kbd>+<kbd>K</kbd>
+    </button>
+
     <!-- Typed.js Script -->
     <script
       src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"
       defer
     ></script>
     <!-- Custom JavaScript -->
+    <script src="script/features/motion-guard.js" defer></script>
+    <script src="script/features/loader.js" defer></script>
     <script src="script/script.js" defer></script>
+    <script src="script/features/hero-fx.js" defer></script>
+    <script src="script/features/parallax.js" defer></script>
+    <script src="script/features/magnetic.js" defer></script>
+    <script src="script/features/cmdk.js" defer></script>
   </body>
 </html>
