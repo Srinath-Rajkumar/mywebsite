@@ -5,7 +5,7 @@
 
 ## About
 
-Srinath Rajkumar is a **Full-Stack Engineer** and **React Developer** with experience building modern, scalable web applications. He specializes in ReactJS, Java, Spring Boot, and frontend technologies including HTML, CSS, and JavaScript.
+Srinath Rajkumar is a **Full-Stack Engineer** and **React Developer** with over **4 years of professional software experience** (from Infosys onward), building modern, scalable web applications. He specializes in ReactJS, Java, Spring Boot, and frontend technologies including HTML, CSS, and JavaScript.
 
 - **Email:** developer@srinath.cloud
 - **Website:** https://www.srinath.cloud/
@@ -47,15 +47,7 @@ Contributed to enterprise-level application development and maintenance. Extensi
 ### Technical Team Member — Panther 3D
 **Feb 2021 – Jan 2022 · 1 year · Full-time**
 
-Played a key role in the technical team focusing on 3D printing technologies and software. Involved in troubleshooting, product development support, and enhancing technical processes.
-
-## Projects
-
-### 3D Print Farm Management
-A comprehensive software solution to monitor, manage, and optimize operations for a 3D printer farm. Features real-time printer status tracking, job queuing, and resource analytics.
-
-- **Technologies:** ReactJS, Express.js, MongoDB
-- **GitHub:** https://github.com/Srinath-Rajkumar/3dprint_tracker
+Supported 3D printer hardware and operations — troubleshooting devices, assisting product development, and improving technical workflows. This role focused on 3D printing and hardware, prior to his software engineering career at Infosys.
 
 ## Contact
 

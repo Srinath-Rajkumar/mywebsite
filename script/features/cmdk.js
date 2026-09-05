@@ -25,7 +25,6 @@
         { id: 'go-home', label: 'Go to Home', hint: 'Section', icon: 'home-outline', keywords: 'home hero top start', run: () => scrollToSection('hero') },
         { id: 'go-about', label: 'Go to About', hint: 'Section', icon: 'person-outline', keywords: 'about me bio profile', run: () => scrollToSection('about') },
         { id: 'go-experience', label: 'Go to Experience', hint: 'Section', icon: 'briefcase-outline', keywords: 'experience work jobs timeline career', run: () => scrollToSection('experience') },
-        { id: 'go-projects', label: 'Go to Projects', hint: 'Section', icon: 'code-slash-outline', keywords: 'projects work portfolio code', run: () => scrollToSection('projects') },
         { id: 'go-contact', label: 'Go to Contact', hint: 'Section', icon: 'mail-outline', keywords: 'contact reach email hire', run: () => scrollToSection('contact') },
         {
             id: 'toggle-theme',

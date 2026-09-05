@@ -223,12 +223,6 @@
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Projects",
-            "item": "https://www.srinath.cloud/#projects"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
             "name": "Contact",
             "item": "https://www.srinath.cloud/#contact"
           }
@@ -341,7 +335,6 @@
           <li role="none">
             <a href="#experience" role="menuitem">Experience</a>
           </li>
-          <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
           <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
         </ul>
         <button
@@ -382,21 +375,21 @@
           Crafting robust and scalable web applications with a passion for clean
           code and innovative solutions.
         </p>
-        <div class="hero-cta">
-          <a
-            href="#projects"
-            class="btn btn-primary"
-            aria-label="View my projects"
-            >View My Work</a
-          >
-          <a
-            href="#contact"
-            class="btn btn-secondary"
-            aria-label="Get in touch with me"
-            >Get In Touch</a
-          >
-        </div>
+
+        <ul class="hero-stack" aria-label="Core technologies">
+          <li>React.js</li>
+          <li>Java</li>
+          <li>Spring Boot</li>
+          <li>TypeScript</li>
+          <li>PostgreSQL</li>
+          <li>GraphQL</li>
+        </ul>
       </div>
+
+      <a href="#about" class="hero-scroll" aria-label="Scroll to About section">
+        <span>Explore</span>
+        <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+      </a>
     </section>
 
     <!-- About Section -->
@@ -407,9 +400,9 @@
           <div class="about-text">
               <p>
                 I'm a <strong>Full-Stack Engineer &amp; React Developer</strong> with
-                over <strong>5 years of professional experience</strong> building modern,
-                responsive, and scalable web applications — from enterprise systems to
-                production-ready SPAs.
+                over <strong>4 years of professional software experience</strong> — from
+                my enterprise work at Infosys through my current React role — building modern,
+                responsive, and scalable web applications.
               </p>
               <p>
                 On the <strong>frontend</strong>, I work daily with <strong>React.js</strong>,
@@ -513,50 +506,11 @@
                 Panther 3D | Feb 2021 - Jan 2022 · 1 yr
               </p>
               <p>
-                Played a key role in the technical team, focusing on 3D printing
-                technologies and software. Involved in troubleshooting, product
-                development support, and enhancing technical processes within a
-                fast-paced startup environment.
+                Supported 3D printer hardware and operations — troubleshooting devices,
+                assisting product development, and improving technical workflows in a
+                fast-paced startup environment. This role was focused on 3D printing
+                and hardware, before my software engineering career began at Infosys.
               </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section
-      id="projects"
-      class="section bg-light"
-      aria-label="Projects section"
-    >
-      <div class="container">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-grid" role="list">
-          <article class="project-card" role="listitem">
-            <div class="project-info">
-              <h3>3D Print Farm Management</h3>
-              <p class="project-description">
-                A comprehensive software solution designed to monitor, manage,
-                and optimize operations for a 3D printer farm. Features include
-                real-time printer status tracking, job queuing, and resource
-                analytics.
-              </p>
-              <p class="project-tech">
-                <strong>Technologies:</strong> ReactJS, Express.js, MongoDB
-              </p>
-              <div class="project-links">
-                <a
-                  href="https://github.com/Srinath-Rajkumar/3dprint_tracker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-secondary btn-small"
-                  aria-label="View 3D Print Farm Management project on GitHub"
-                >
-                  <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
-                  GitHub
-                </a>
-              </div>
             </div>
           </article>
         </div>
@@ -564,7 +518,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section" aria-label="Contact section">
+    <section id="contact" class="section bg-light" aria-label="Contact section">
       <div class="container contact-content">
         <h2 class="section-title">Get In Touch</h2>
         <p>
@@ -603,33 +557,32 @@
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- Footer -->
-    <footer id="footer" role="contentinfo">
-      <div class="container">
-        <p>
-          © <span id="current-year" aria-label="Current year"></span> Srinath
-          Rajkumar. All Rights Reserved.
-        </p>
-        <p class="attributions">
-          Hosted with
-          <ion-icon
-            name="heart"
-            style="color: #e25555"
-            aria-label="love"
-          ></ion-icon>
-          on
-          <a
-            href="https://pages.github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Pages"
-            >GitHub Pages</a
-          >. Design inspired and assisted by AI.
-        </p>
-      </div>
-    </footer>
+      <footer id="footer" role="contentinfo">
+        <div class="container">
+          <p>
+            © <span id="current-year" aria-label="Current year"></span> Srinath
+            Rajkumar. All Rights Reserved.
+          </p>
+          <p class="attributions">
+            Hosted with
+            <ion-icon
+              name="heart"
+              style="color: #e25555"
+              aria-label="love"
+            ></ion-icon>
+            on
+            <a
+              href="https://pages.github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Pages"
+              >GitHub Pages</a
+            >. Design inspired and assisted by AI.
+          </p>
+        </div>
+      </footer>
+    </section>
 
     <!-- Command Palette (Cmd+K / Ctrl+K) -->
     <div

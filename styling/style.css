@@ -551,10 +551,71 @@ body.light-theme .hero-content h1 {
 .hero-subtitle {
     font-size: 1.1rem;
     max-width: 600px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1.75rem auto;
     color: var(--text-secondary);
     animation: fadeInUp 0.8s ease-out 0.5s backwards;
     line-height: 1.8;
+}
+
+.hero-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 640px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+.hero-stack li {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent-color);
+    background: rgba(var(--accent-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-rgb), 0.22);
+    transition: transform var(--transition-fast), box-shadow var(--transition-base),
+        background-color var(--transition-base);
+}
+
+.hero-stack li:hover {
+    transform: translateY(-2px);
+    background: rgba(var(--accent-rgb), 0.16);
+    box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.2);
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    animation: fadeIn 1s ease-out 1s backwards, heroBounce 2.2s ease-in-out 1.4s infinite;
+}
+
+.hero-scroll ion-icon {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.hero-scroll:hover {
+    color: var(--accent-color);
+}
+
+@keyframes heroBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(6px); }
 }
 
 .hero-cta { animation: fadeInUp 0.8s ease-out 0.6s backwards; }
@@ -720,6 +781,8 @@ body::-webkit-scrollbar-thumb:hover {
     .hero-content h1 { font-size: 2.5rem; }
     .hero-content h2 { font-size: 1.5rem; }
     .hero-subtitle { font-size: 1rem; }
+    .hero-stack li { font-size: 0.78rem; }
+    .hero-scroll { bottom: 18px; }
 
     .theme-toggle-btn {
         margin-left: auto;
@@ -765,7 +828,12 @@ body::-webkit-scrollbar-thumb:hover {
 @media (prefers-reduced-motion: reduce) {
     .sr-loader__ring,
     #hero,
-    body.light-theme #hero {
+    body.light-theme #hero,
+    .section:not(#hero),
+    body.light-theme .section:not(#hero) {
+        animation: none !important;
+    }
+    .hero-scroll {
         animation: none !important;
     }
     .sr-scroll-progress { display: none; }

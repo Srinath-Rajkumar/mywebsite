@@ -22,7 +22,148 @@
 }
 
 /* ---------- Sections ---------- */
-.section { padding: 80px 0; }
+.section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Hero-matched ambient backgrounds for all sections below the fold */
+.section:not(#hero) {
+    margin-top: 6px;
+    background: linear-gradient(
+        135deg,
+        rgba(52, 46, 55, 0.97) 0%,
+        rgba(42, 37, 46, 0.99) 50%,
+        rgba(52, 46, 55, 0.97) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 14s ease infinite;
+    box-shadow:
+        inset 0 1px 0 rgba(var(--accent-rgb), 0.14),
+        0 4px 24px rgba(0, 0, 0, 0.18);
+}
+
+#hero + .section {
+    margin-top: 6px;
+}
+
+#contact {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    box-shadow:
+        inset 0 1px 0 rgba(var(--accent-rgb), 0.14),
+        0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.bg-light:not(#hero) {
+    background: linear-gradient(
+        135deg,
+        rgba(42, 37, 46, 0.98) 0%,
+        rgba(52, 46, 55, 0.94) 35%,
+        rgba(42, 37, 46, 0.98) 70%,
+        rgba(52, 46, 55, 0.94) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 18s ease infinite reverse;
+}
+
+.bg-light:not(#hero)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 78% 22%, rgba(var(--accent-rgb), 0.14) 0%, transparent 48%),
+        radial-gradient(circle at 22% 82%, rgba(var(--accent-rgb), 0.09) 0%, transparent 52%),
+        radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.04) 0%, transparent 62%);
+}
+
+.section:not(#hero):not(.bg-light)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 42%, rgba(var(--accent-rgb), 0.12) 0%, transparent 48%),
+        radial-gradient(circle at 82% 78%, rgba(var(--accent-rgb), 0.08) 0%, transparent 52%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section:not(#hero)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(var(--accent-rgb), 0.035) 1px, transparent 0);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+}
+
+.section:not(#hero) > .container,
+#contact > #footer {
+    position: relative;
+    z-index: 1;
+}
+
+body.light-theme .section:not(#hero) {
+    box-shadow:
+        inset 0 1px 0 rgba(var(--accent-rgb), 0.12),
+        0 4px 20px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(
+        135deg,
+        rgba(245, 247, 250, 0.98) 0%,
+        rgba(236, 240, 247, 0.95) 25%,
+        rgba(255, 255, 255, 0.98) 50%,
+        rgba(236, 240, 247, 0.95) 75%,
+        rgba(245, 247, 250, 0.98) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 16s ease infinite;
+}
+
+body.light-theme #contact {
+    box-shadow:
+        inset 0 1px 0 rgba(var(--accent-rgb), 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .section:not(#hero):not(.bg-light)::before {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(var(--accent-rgb), 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(var(--accent-rgb), 0.11) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.05) 0%, transparent 60%);
+}
+
+body.light-theme .section:not(#hero)::after {
+    background:
+        radial-gradient(circle at 1px 1px, rgba(var(--accent-rgb), 0.04) 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.45;
+}
+
+body.light-theme .bg-light:not(#hero) {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(236, 240, 247, 0.92) 30%,
+        rgba(245, 247, 250, 0.98) 60%,
+        rgba(236, 240, 247, 0.92) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 20s ease infinite reverse;
+}
+
+body.light-theme .bg-light:not(#hero)::before {
+    background:
+        radial-gradient(circle at 75% 28%, rgba(var(--accent-rgb), 0.16) 0%, transparent 50%),
+        radial-gradient(circle at 28% 75%, rgba(var(--accent-rgb), 0.12) 0%, transparent 52%),
+        radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.06) 0%, transparent 58%);
+}
 
 .section-title {
     text-align: center;
@@ -54,28 +195,13 @@
     transform: translateX(-50%);
     width: 120px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, rgba(162, 215, 41, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.3), transparent);
     border-radius: 2px;
     animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
 .bg-light {
-    background-color: var(--secondary-bg);
     position: relative;
-}
-
-body.light-theme .bg-light::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(circle at 1px 1px, rgba(60, 145, 230, 0.03) 1px, transparent 0);
-    background-size: 40px 40px;
-    pointer-events: none;
-    opacity: 0.5;
 }
 
 /* ---------- About Section ---------- */
@@ -483,7 +609,7 @@ body.light-theme .project-card {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(162, 215, 41, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.1), transparent);
     transition: left var(--transition-slow);
 }
 
@@ -514,13 +640,35 @@ body.light-theme .project-card {
     outline-offset: 2px;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer (inside Contact section) ---------- */
+#contact .contact-content {
+    padding-bottom: 16px;
+}
+
 #footer {
-    background-color: var(--secondary-bg);
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+    padding: 24px 0 30px;
     color: var(--text-secondary);
     text-align: center;
-    padding: 30px 0;
     font-size: 0.9rem;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+    isolation: auto;
+}
+
+#footer::before,
+#footer::after {
+    content: none;
+}
+
+#footer .container {
+    position: relative;
+    z-index: 1;
+    padding-top: 24px;
+    text-align: center;
 }
 
 #footer p { margin-bottom: 0.5rem; }
